@@ -78,4 +78,4 @@ map('n', '<c-g>', ':Telescope live_grep<CR>')
 
 -- Comment
 map('n', '<Leader>c', ':CommentToggle<CR>')
-map('n', '<Leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+map('v', '<Leader>c', ':CommentToggle<CR>')
