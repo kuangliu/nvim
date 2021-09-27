@@ -18,7 +18,7 @@ require('lualine').setup {
   },
 }
 
-require("bufferline").setup {
+require('bufferline').setup {
   options = {
     indicator_icon = '',
     modified_icon = '+',
@@ -100,14 +100,14 @@ nvim_lsp['pyright'].setup{
   capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 }
 
-require "lsp_signature".setup()
+require('lsp_signature').setup()
 
 require('formatter').setup({
   filetype = {
     python = {
       function()
         return {
-          exe = "autopep8",
+          exe = 'autopep8',
           args = { '-' },
           stdin = true,
         }
