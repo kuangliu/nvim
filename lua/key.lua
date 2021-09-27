@@ -89,7 +89,6 @@ my_tree_find = function()
     require'nvim-tree'.find_file(true)
   end
 end
---map('n', '<Leader>f', ':NvimTreeFindFile<CR>')
 map('n', '<Leader>f', ':lua my_tree_find()<CR>')
 map('n', '<S-r>', ':NvimTreeRefresh<CR>')
 

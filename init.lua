@@ -104,6 +104,10 @@ nvim_lsp['pyright'].setup{
   capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 }
 
+nvim_lsp['ccls'].setup{
+  on_attach = on_attach,
+}
+
 require('lsp_signature').setup()
 
 require('formatter').setup({
