@@ -122,27 +122,21 @@ require('formatter').setup({
 
 -- Format on save
 vim.api.nvim_exec([[
-augroup FormatAutogroup
-  autocmd!
-  autocmd BufWritePost *.py FormatWrite
-augroup END
-]], true)
+  augroup FormatAutogroup
+    autocmd!
+    autocmd BufWritePost *.py FormatWrite
+  augroup END
+  ]], true)
 
 -- Nvim-tree
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 require'nvim-tree'.setup {
   view = {
-    -- width of the window, can be either a number (columns) or a string in `%`
     width = 30,
-    -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
     side = 'left',
-    -- if true the tree will resize itself after opening a file
     auto_resize = false,
     mappings = {
-      -- custom only false will merge the list with the default mappings
-      -- if true, it will only use your list to set the mappings
       custom_only = false,
-      -- list of mappings to set on the tree manually
       list = {
         { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
         { key = "h", cb = tree_cb "close_node" },
@@ -151,3 +145,19 @@ require'nvim-tree'.setup {
     }
   }
 }
+
+-- Treesitter
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    custom_captures = {
+      -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
+      ["foo.bar"] = "Identifier",
+    },
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}  

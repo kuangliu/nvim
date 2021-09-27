@@ -3,7 +3,8 @@ local default_options = {
   expandtab = true,       -- expand tabs into spaces
   shiftwidth = 2,         -- shift lines by 2 spaces
   tabstop = 2,            -- 2 whitespaces for tabs visual presentation 
-  cursorline = true,      -- highlight the current line
+  cursorline = true,      -- highlight current row
+  cursorcolumn = true,    -- highlight current column
   scrolloff = 10,         -- let 10 lines before/after cursor during scroll
   fileencoding = "utf-8", -- the encoding written to a file
   termguicolors = true,   -- set color
@@ -28,4 +29,3 @@ vim.g.nvim_tree_gitignore = 1
 vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_hide_dotfiles = 1
 vim.g.nvim_tree_highlight_opened_files = 1
-
