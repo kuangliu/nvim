@@ -79,3 +79,8 @@ map('n', '<c-g>', ':Telescope live_grep<CR>')
 -- Comment
 map('n', '<Leader>c', ':CommentToggle<CR>')
 map('v', '<Leader>c', ':CommentToggle<CR>')
+
+-- Nvim-tree
+map('n', '<Leader>f', ':NvimTreeToggle<CR>')
+map('n', '<S-r>', ':NvimTreeRefresh<CR>')
+

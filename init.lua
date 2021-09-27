@@ -72,6 +72,10 @@ cmp.setup{
   },
 }
 
+----------------------------------
+-- LSP
+----------------------------------
+
 local nvim_lsp = require('lspconfig')
 
 -- Use an on_attach function to only map the following keys
@@ -123,3 +127,27 @@ augroup FormatAutogroup
   autocmd BufWritePost *.py FormatWrite
 augroup END
 ]], true)
+
+-- Nvim-tree
+local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+require'nvim-tree'.setup {
+  view = {
+    -- width of the window, can be either a number (columns) or a string in `%`
+    width = 30,
+    -- side of the tree, can be one of 'left' | 'right' | 'top' | 'bottom'
+    side = 'left',
+    -- if true the tree will resize itself after opening a file
+    auto_resize = false,
+    mappings = {
+      -- custom only false will merge the list with the default mappings
+      -- if true, it will only use your list to set the mappings
+      custom_only = false,
+      -- list of mappings to set on the tree manually
+      list = {
+        { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
+        { key = "h", cb = tree_cb "close_node" },
+        { key = "i", cb = tree_cb "vsplit" },
+      }
+    }
+  }
+}
