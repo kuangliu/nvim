@@ -135,13 +135,19 @@ vim.api.nvim_exec([[
 -- Nvim-tree
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 require'nvim-tree'.setup {
-  update_cwd = false,
+  disable_netrw       = true,
+  hijack_netrw        = true,
+  open_on_setup       = false,
+  open_on_tab         = false,
+  auto_close          = false,
+  hijack_cursor       = false,
+  update_cwd          = false,
+  lsp_diagnostics     = false,
   update_focused_file = {
-    enable      = false,
-    update_cwd  = false,
+    enable = false,
+    update_cwd = false,
     ignore_list = {}
   },
-
   view = {
     width = 30,
     side = 'left',
