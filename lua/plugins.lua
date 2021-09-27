@@ -10,7 +10,7 @@ require('packer').startup(function()
 
   -- One dark theme
   use {
-    'navarasu/onedark.nvim',
+    'kuangliu/onedark.nvim',
     config = function() require'onedark'.setup {} end
   }
 
