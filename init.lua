@@ -131,6 +131,7 @@ vim.api.nvim_exec([[
 -- Nvim-tree
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 require'nvim-tree'.setup {
+  update_cwd = false,
   view = {
     width = 30,
     side = 'left',
@@ -141,6 +142,7 @@ require'nvim-tree'.setup {
         { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
         { key = "h", cb = tree_cb "close_node" },
         { key = "i", cb = tree_cb "vsplit" },
+        { key = "<Leader>f", cb = tree_cb "close" },
       }
     }
   }

@@ -81,6 +81,15 @@ map('n', '<Leader>c', ':CommentToggle<CR>')
 map('v', '<Leader>c', ':CommentToggle<CR>')
 
 -- Nvim-tree
-map('n', '<Leader>f', ':NvimTreeToggle<CR>')
+my_tree_find = function()
+  local view = require'nvim-tree.view'
+  if view.win_open() then
+    view.close()
+  else
+    require'nvim-tree'.find_file(true)
+  end
+end
+--map('n', '<Leader>f', ':NvimTreeFindFile<CR>')
+map('n', '<Leader>f', ':lua my_tree_find()<CR>')
 map('n', '<S-r>', ':NvimTreeRefresh<CR>')
 
