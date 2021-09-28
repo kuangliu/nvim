@@ -31,3 +31,34 @@ vim.g.nvim_tree_gitignore = 1
 vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_hide_dotfiles = 1
 vim.g.nvim_tree_highlight_opened_files = 1
+vim.g.nvim_tree_icons = {
+  default = '',
+  symlink = '',
+  git = {
+    -- unstaged = "✗",
+    unstaged = "•",
+    staged = "✓",
+    unmerged = "",
+    renamed = "➜",
+    -- untracked = "★",
+    untracked = "✗",
+    deleted = "",
+    ignored = "◌"
+    },
+  folder = {
+    arrow_open = "",
+    arrow_closed = "",
+    default = "",
+    open = "",
+    empty = "",
+    empty_open = "",
+    symlink = "",
+    symlink_open = "",
+    },
+  lsp = {
+    hint = "",
+    info = "",
+    warning = "",
+    error = "",
+  }
+}
