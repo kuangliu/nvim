@@ -6,10 +6,12 @@ local default_options = {
   cursorline = true,      -- highlight current row
   cursorcolumn = true,    -- highlight current column
   scrolloff = 10,         -- let 10 lines before/after cursor during scroll
-  fileencoding = "utf-8", -- the encoding written to a file
+  fileencoding = 'utf-8', -- the encoding written to a file
   termguicolors = true,   -- set color
   splitbelow = true,
   splitright = true,
+  clipboard = 'unnamedplus',
+  swapfile = false,
 }
 
 for k, v in pairs(default_options) do
