@@ -39,7 +39,7 @@ map('v', '>', '>gv')
 map('v', '<Leader>y', '"+y')
 
 -- Replace word under cursor
-map('n', '<Leader>r', ':%s/\\<<c-r><c-w>\\>//g<left><left>', { silent=false })
+-- map('n', '<Leader>r', ':%s/\\<<c-r><c-w>\\>//g<left><left>', { silent=false })
 
 -- Terminal settings
 map('n', '<Leader>h', ':wincmd h<CR>')
