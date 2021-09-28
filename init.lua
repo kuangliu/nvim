@@ -2,6 +2,9 @@ require('plugins')
 require('settings')
 require('key')
 
+local function my_fpath_func()
+  return vim.fn.expand('%:p')
+end
 require('lualine').setup {
   options = { 
     theme = 'onedark', section_separators = { left = '', right = ''},
@@ -9,12 +12,7 @@ require('lualine').setup {
     icons_enabled = false,
   },
   sections = {
-    lualine_c = {
-      {
-        'filename',
-        path = 2 -- 0 = just filename, 1 = relative path, 2 = absolute path
-      }
-    }
+    lualine_c = {my_fpath_func}
   },
 }
 
@@ -179,3 +177,4 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }  
+
