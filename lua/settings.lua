@@ -26,6 +26,9 @@ vim.g.floaterm_wintitle=0
 vim.g.floaterm_autoclose=1
 vim.g.floaterm_shell='zsh'
 
+vim.cmd('colorscheme onedark')
+vim.cmd('set background=dark')
+
 vim.cmd('highlight NvimTreeFolderIcon guibg=blue')
 vim.g.nvim_tree_gitignore = 1
 vim.g.nvim_tree_indent_markers = 1

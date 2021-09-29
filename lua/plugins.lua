@@ -9,10 +9,11 @@ require('packer').startup(function()
   use {'wbthomason/packer.nvim', opt = true}
 
   -- One dark theme
-  use {
-    'kuangliu/onedark.nvim',
-    config = function() require'onedark'.setup {} end
-  }
+  -- use {
+  --   'kuangliu/onedark.nvim',
+  --   config = function() require'onedark'.setup {} end
+  -- }
+  use {'joshdick/onedark.vim'}
 
   use('rhysd/accelerated-jk')
   use('easymotion/vim-easymotion')
