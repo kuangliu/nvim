@@ -57,9 +57,6 @@ require('bufferline').setup {
   },
 }
 
-require('nvim-autopairs').setup{}
-require('nvim_comment').setup{}
-
 local cmp = require('cmp')
 cmp.setup{
   sources = {
@@ -108,8 +105,6 @@ nvim_lsp['pyright'].setup{
 nvim_lsp['ccls'].setup{
   on_attach = on_attach,
 }
-
-require('lsp_signature').setup()
 
 require('formatter').setup({
   filetype = {

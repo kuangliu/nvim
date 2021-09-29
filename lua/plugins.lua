@@ -23,14 +23,20 @@ require('packer').startup(function()
   }
 
   use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
-  use {'windwp/nvim-autopairs'}
+  use {
+    'windwp/nvim-autopairs',
+    config = function() require'nvim-autopairs'.setup {} end
+  }
   use {'schickling/vim-bufonly'}
   use {'voldikss/vim-floaterm'}
-  use {'terrortylor/nvim-comment'}
+  use {
+    'terrortylor/nvim-comment',
+    config = function() require'nvim_comment'.setup {} end
+  }
 
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = {'nvim-lua/plenary.nvim'}
   }
 
   use {'neovim/nvim-lspconfig'}
@@ -43,7 +49,10 @@ require('packer').startup(function()
     },
   }
 
-  use {'ray-x/lsp_signature.nvim'}
+  use {
+    'ray-x/lsp_signature.nvim',
+    config = function() require'lsp_signature'.setup {} end
+  }
   use {'mhartington/formatter.nvim'}
 
   use {
