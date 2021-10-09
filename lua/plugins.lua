@@ -64,7 +64,7 @@ require('packer').startup(function()
     run = ':TSUpdate'
   }
 
-  use {"akinsho/toggleterm.nvim"}
+  use {'akinsho/toggleterm.nvim'}
 end)
 
 

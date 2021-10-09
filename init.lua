@@ -151,10 +151,10 @@ require('nvim-tree').setup{
     mappings = {
       custom_only = false,
       list = {
-        { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
-        { key = "h", cb = tree_cb "close_node" },
-        { key = "i", cb = tree_cb "vsplit" },
-        { key = "<Leader>f", cb = tree_cb "close" },
+        { key = { 'l', '<CR>', 'o' }, cb = tree_cb 'edit' },
+        { key = 'h', cb = tree_cb 'close_node' },
+        { key = 'i', cb = tree_cb 'vsplit' },
+        { key = '<Leader>f', cb = tree_cb 'close' },
       }
     }
   }
@@ -166,7 +166,7 @@ require('nvim-treesitter.configs').setup{
     enable = true,
     custom_captures = {
       -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
-      ["foo.bar"] = "Identifier",
+      ['foo.bar'] = 'Identifier',
     },
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
@@ -177,12 +177,12 @@ require('nvim-treesitter.configs').setup{
 }  
 
 -- Toggleterm
-require("toggleterm").setup{
+require('toggleterm').setup{
   -- size can be a number or function which is passed the current terminal
   size = function(term)
-    if term.direction == "horizontal" then
+    if term.direction == 'horizontal' then
       return 20
-    elseif term.direction == "vertical" then
+    elseif term.direction == 'vertical' then
       return vim.o.columns * 0.4
     end
   end,
@@ -208,8 +208,8 @@ require("toggleterm").setup{
     height = math.floor(vim.api.nvim_win_get_height(0) * 0.9),
     winblend = 3,
     highlights = {
-      border = "Normal",
-      background = "Normal",
+      border = 'Normal',
+      background = 'Normal',
     }
   }
 }
@@ -217,8 +217,8 @@ require("toggleterm").setup{
 -- Nvim-comment
 require('nvim_comment').setup{
   hook = function()
-    if vim.api.nvim_buf_get_option(0, "filetype") == "cpp" then
-      vim.api.nvim_buf_set_option(0, "commentstring", "// %s")
+    if vim.api.nvim_buf_get_option(0, 'filetype') == 'cpp' then
+      vim.api.nvim_buf_set_option(0, 'commentstring', '// %s')
     end
   end
 }

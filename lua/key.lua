@@ -1,10 +1,10 @@
 local function map(mode, key, action, opts)
-  opts = vim.tbl_extend("keep", opts or {}, { noremap = true, silent = true, expr = false })
+  opts = vim.tbl_extend('keep', opts or {}, { noremap = true, silent = true, expr = false })
   vim.api.nvim_set_keymap(mode, key, action, opts)
 end
 
 local function plugmap(mode, key, action, opts)
-  opts = vim.tbl_extend("keep", opts or {}, { noremap = not vim.startswith(action, "<Plug>") })
+  opts = vim.tbl_extend('keep', opts or {}, { noremap = not vim.startswith(action, '<Plug>') })
   map(mode, key, action, opts)
 end
 
