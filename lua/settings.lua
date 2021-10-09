@@ -13,6 +13,7 @@ local default_options = {
   clipboard = 'unnamedplus',
   swapfile = false,
   ignorecase = true,
+  shell = 'zsh',
 }
 
 for k, v in pairs(default_options) do
