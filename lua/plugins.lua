@@ -29,10 +29,7 @@ require('packer').startup(function()
     config = function() require'nvim-autopairs'.setup {} end
   }
   use {'schickling/vim-bufonly'}
-  use {
-    'terrortylor/nvim-comment',
-    config = function() require'nvim_comment'.setup {} end
-  }
+  use {'terrortylor/nvim-comment'}
 
   use {
     'nvim-telescope/telescope.nvim',
