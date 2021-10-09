@@ -2,6 +2,9 @@ require('plugins')
 require('settings')
 require('key')
 
+----------------------------------
+-- Lualine & bufferline
+----------------------------------
 local function my_fpath_func()
   return vim.fn.expand('%:p')
 end
@@ -57,6 +60,9 @@ require('bufferline').setup {
   },
 }
 
+----------------------------------
+-- Nvim-cmp
+----------------------------------
 local cmp = require('cmp')
 cmp.setup{
   sources = {
@@ -71,7 +77,6 @@ cmp.setup{
 ----------------------------------
 -- LSP
 ----------------------------------
-
 local nvim_lsp = require('lspconfig')
 
 -- Use an on_attach function to only map the following keys
@@ -106,6 +111,9 @@ nvim_lsp['ccls'].setup{
   on_attach = on_attach,
 }
 
+----------------------------------
+-- Formatter
+----------------------------------
 require('formatter').setup({
   filetype = {
     python = {
@@ -128,7 +136,9 @@ vim.api.nvim_exec([[
   augroup END
   ]], true)
 
+----------------------------------
 -- Nvim-tree
+----------------------------------
 local tree_cb = require('nvim-tree.config').nvim_tree_callback
 require('nvim-tree').setup{
   disable_netrw       = true,
@@ -160,7 +170,9 @@ require('nvim-tree').setup{
   }
 }
 
+----------------------------------
 -- Treesitter
+----------------------------------
 require('nvim-treesitter.configs').setup{
   highlight = {
     enable = true,
@@ -176,7 +188,9 @@ require('nvim-treesitter.configs').setup{
   },
 }  
 
+----------------------------------
 -- Toggleterm
+----------------------------------
 require('toggleterm').setup{
   -- size can be a number or function which is passed the current terminal
   size = function(term)
@@ -196,7 +210,7 @@ require('toggleterm').setup{
   persist_size = true,
   -- direction = 'vertical' | 'horizontal' | 'window' | 'float',
   close_on_exit = true, -- close the terminal window when the process exits
-  shell = vim.o.shell, -- change the default shell
+  shell = vim.o.shell,  -- change the default shell
   -- This field is only relevant if direction is set to 'float'
   float_opts = {
     -- The border key is *almost* the same as 'nvim_open_win'
@@ -214,7 +228,9 @@ require('toggleterm').setup{
   }
 }
 
+----------------------------------
 -- Nvim-comment
+----------------------------------
 require('nvim_comment').setup{
   hook = function()
     if vim.api.nvim_buf_get_option(0, 'filetype') == 'cpp' then
