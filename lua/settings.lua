@@ -12,6 +12,7 @@ local default_options = {
   splitright = true,
   clipboard = 'unnamedplus',
   swapfile = false,
+  ignorecase = true,
 }
 
 for k, v in pairs(default_options) do

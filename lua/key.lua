@@ -62,15 +62,28 @@ plugmap('n', 'k', '<Plug>(accelerated_jk_gk)')
 plugmap('n', 's' , '<Plug>(easymotion-s2)')
 plugmap('n', 'f' , '<Plug>(easymotion-sl)')
 
--- Floaterm
-map('n', '2', ':FloatermToggle<CR>')
-map('t', '<ESC>', '<C-\\><C-n>')  -- leave nvim terminal mode
-map('n', 'tf', ':FloatermNew<CR>')
-map('n', 'tt', ':FloatermToggle<CR>')
-map('n', 'tr', ':FloatermNew --position=right --height=1 --width=0.4 --wintype=vsplit<CR>')
-map('n', 'tb', ':FloatermNew --position=bottom --height=0.4 --width=1 --wintype=normal<CR>')
-map('n', 'zg', ':FloatermNew lazygit<CR>')
-map('n', 'du', ':FloatermNew ncdu<CR>')
+-- Toggleterm
+map('t', '<ESC>', [[<C-\><C-n>]])
+map('n', 'tb', ':ToggleTerm dir=./ direction=horizontal<CR>')
+map('n', 'tr', ':ToggleTerm dir=./ direction=vertical<CR>')
+map('n', 'tf', ':ToggleTerm dir=./ direction=float<CR>')
+map('n', 'tt', ':ToggleTerm dir=./ direction=float<CR>')
+
+local Terminal  = require('toggleterm.terminal').Terminal
+local lazygit = Terminal:new({ 
+  cmd = 'lazygit', 
+  direction='float', 
+  hidden = true ,
+  float_opts = {
+    border = 'curved',
+    width = math.floor(vim.api.nvim_win_get_width(0) * 0.9),
+    height = math.floor(vim.api.nvim_win_get_height(0) * 0.9),
+  },
+})
+function lazygit_toggle()
+  lazygit:toggle()
+end
+map('n', 'zg', '<cmd>lua lazygit_toggle()<CR>')
 
 -- Telescope
 map('n', '<c-f>', ':Telescope find_files<CR>')

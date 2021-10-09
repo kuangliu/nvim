@@ -13,7 +13,7 @@ require('packer').startup(function()
   --   'kuangliu/onedark.nvim',
   --   config = function() require'onedark'.setup {} end
   -- }
-  use {'joshdick/onedark.vim'}
+  use {'kuangliu/onedark.vim'}
 
   use('rhysd/accelerated-jk')
   use('easymotion/vim-easymotion')
@@ -29,7 +29,6 @@ require('packer').startup(function()
     config = function() require'nvim-autopairs'.setup {} end
   }
   use {'schickling/vim-bufonly'}
-  use {'voldikss/vim-floaterm'}
   use {
     'terrortylor/nvim-comment',
     config = function() require'nvim_comment'.setup {} end
@@ -68,6 +67,7 @@ require('packer').startup(function()
     run = ':TSUpdate'
   }
 
+  use {"akinsho/toggleterm.nvim"}
 end)
 
 
