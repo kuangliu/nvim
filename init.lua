@@ -124,7 +124,18 @@ require('formatter').setup({
           stdin = true,
         }
       end
-    }
+    },
+    cpp = {
+        -- clang-format
+       function()
+          return {
+            exe = 'clang-format',
+            args = {'--assume-filename', vim.api.nvim_buf_get_name(0), '--style', 'Chromium'},
+            stdin = true,
+            cwd = vim.fn.expand('%:p:h')  -- Run clang-format in cwd of the file.
+          }
+        end
+    },
   }
 })
 
@@ -133,6 +144,8 @@ vim.api.nvim_exec([[
   augroup FormatAutogroup
     autocmd!
     autocmd BufWritePost *.py silent! FormatWrite
+    autocmd FileType c autocmd BufWritePost <buffer> FormatWrite
+    autocmd FileType cpp autocmd BufWritePost <buffer> FormatWrite
   augroup END
   ]], true)
 
