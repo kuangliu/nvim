@@ -143,9 +143,7 @@ require('formatter').setup({
 vim.api.nvim_exec([[
   augroup FormatAutogroup
     autocmd!
-    autocmd BufWritePost *.py silent! FormatWrite
-    autocmd FileType c autocmd BufWritePost <buffer> FormatWrite
-    autocmd FileType cpp autocmd BufWritePost <buffer> FormatWrite
+    autocmd BufWritePost *.py,*.h,*cc silent! FormatWrite
   augroup END
   ]], true)
 
