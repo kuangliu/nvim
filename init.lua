@@ -79,6 +79,7 @@ cmp.setup{
 ----------------------------------
 local nvim_lsp = require('lspconfig')
 
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
@@ -126,7 +127,6 @@ require('formatter').setup({
       end
     },
     cpp = {
-        -- clang-format
        function()
           return {
             exe = 'clang-format',
