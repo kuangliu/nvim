@@ -175,7 +175,7 @@ require('nvim-tree').setup{
     mappings = {
       custom_only = false,
       list = {
-        { key = { 'l', '<CR>', 'o' }, cb = tree_cb 'edit' },
+        { key = { 'l', '<CR>', 'o', 'e' }, cb = tree_cb 'edit' },
         { key = 'h', cb = tree_cb 'close_node' },
         { key = 'i', cb = tree_cb 'vsplit' },
         { key = '<Leader>f', cb = tree_cb 'close' },
