@@ -72,6 +72,9 @@ cmp.setup{
   mapping = {
     ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' })
   },
+  experimental = {
+    ghost_text = true,
+  }
 }
 
 ----------------------------------
