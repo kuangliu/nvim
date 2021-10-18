@@ -55,7 +55,7 @@ require('packer').startup(function()
   use {
     'kuangliu/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons',
-    config = function() require('nvim-tree').setup {} end,
+    config = function() require'nvim-tree'.setup {} end,
   }
 
   use {'mhinz/vim-startify'}
@@ -65,6 +65,8 @@ require('packer').startup(function()
   }
 
   use {'akinsho/toggleterm.nvim'}
+
+  use {'karb94/neoscroll.nvim'}
 end)
 
 
