@@ -44,6 +44,12 @@ map('v', '<Leader>y', '"+y')
 -- Replace word under cursor
 -- map('n', '<Leader>r', ':%s/\\<<c-r><c-w>\\>//g<left><left>', { silent=false })
 
+-- Resize window
+map('n', '<s-l>', ':vertical resize -5<CR>')
+map('n', '<s-h>', ':vertical resize +5<CR>')
+map('n', '<s-k>', ':resize +5<CR>')
+map('n', '<s-j>', ':resize -5<CR>')
+
 -- Terminal settings
 map('n', '<Leader>h', ':wincmd h<CR>')
 map('n', '<Leader>j', ':wincmd j<CR>')
