@@ -86,7 +86,7 @@ local lazygit = Terminal:new({
 function lazygit_toggle()
   lazygit:toggle()
 end
-map('n', 'zg', '<cmd>lua lazygit_toggle()<CR>')
+map('n', 'zg', ':lua lazygit_toggle()<CR>')
 
 -- Telescope
 map('n', '<c-f>', ':Telescope find_files<CR>')
