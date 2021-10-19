@@ -22,7 +22,7 @@ map('n', '1', ':w<CR>')
 map('n', 'q', ':exit<CR>')
 
 -- Delete from line start to end of previous line
-map('n', '<Leader>d', '^hvk$d<CR>')
+map('n', '<Leader>dk', '^hvk$d<CR>')
 
 -- Delete from cursor to end of previsou line
 map('n', 'dk', 'vk$d')
@@ -94,7 +94,7 @@ map('n', '<Leader>c', ':CommentToggle<CR>')
 map('v', '<Leader>c', ':CommentToggle<CR>')
 
 -- Nvim-tree
-my_tree_find = function()
+function my_tree_find()
   local view = require'nvim-tree.view'
   if view.win_open() then
     view.close()
@@ -105,3 +105,17 @@ end
 map('n', '<Leader>f', ':lua my_tree_find()<CR>')
 map('n', '<S-r>', ':NvimTreeRefresh<CR>')
 
+-- DAP
+function debug_start()
+  require('dapui').open()
+  require('dap').continue()
+end
+function debug_stop()
+  require('dapui').close()
+  require('dap').close()
+end
+map('n', '<F2>', ':lua debug_stop()<CR>')
+map('n', '<F5>', ':lua debug_start()<CR>')
+map('n', '<F10>', ":lua require('dap').step_over()<CR>")
+map('n', '<F11>', ":lua require('dap').step_into()<CR>")
+map('n', '<Leader>db', ":lua require('dap').toggle_breakpoint()<CR>")

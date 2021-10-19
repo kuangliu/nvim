@@ -65,8 +65,12 @@ require('packer').startup(function()
   }
 
   use {'akinsho/toggleterm.nvim'}
-
   use {'karb94/neoscroll.nvim'}
+
+  use {
+    'rcarriga/nvim-dap-ui', 
+    requires = {'mfussenegger/nvim-dap'}
+  }
 end)
 
 
