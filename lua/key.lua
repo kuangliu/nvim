@@ -18,6 +18,9 @@ map('n', '<ESC>', ':nohlsearch<CR>')
 -- Map 1 to save
 map('n', '1', ':w<CR>')
 
+-- Map 2 to toggle float term
+map('n', '2', ':ToggleTerm dir=./ direction=float<CR>')
+
 -- Map q to exit
 map('n', 'q', ':exit<CR>')
 
