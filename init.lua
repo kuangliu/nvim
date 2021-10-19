@@ -134,6 +134,15 @@ require('formatter').setup({
         }
       end
     },
+    cmake = {
+      function()
+        return {
+          exe = 'cmake-format',
+          args = { "-" },
+          stdin = true,
+        }
+      end,
+    },
   }
 })
 
@@ -141,7 +150,7 @@ require('formatter').setup({
 vim.api.nvim_exec([[
   augroup FormatAutogroup
     autocmd!
-    autocmd BufWritePost *.py,*.h,*cc silent! FormatWrite
+    autocmd BufWritePost *.py,*.h,*.cc,CMakeLists.txt silent! FormatWrite
   augroup END
   ]], true)
 
