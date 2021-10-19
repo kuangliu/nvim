@@ -5,10 +5,6 @@ require('key')
 ----------------------------------
 -- Lualine & bufferline
 ----------------------------------
-local function my_fpath_func()
-  return vim.fn.expand('%:p')
-end
-
 require('lualine').setup {
   options = { 
     theme = 'onedark', section_separators = { left = '', right = ''},
@@ -16,7 +12,7 @@ require('lualine').setup {
     icons_enabled = false,
   },
   sections = {
-    lualine_c = {my_fpath_func}
+    lualine_c = { function() return vim.fn.expand('%:p') end }
   },
 }
 
