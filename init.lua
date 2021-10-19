@@ -285,11 +285,20 @@ dap.configurations.cpp = {
     type = 'lldb',
     request = 'launch',
     program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+      local cmd = vim.fn.input('Launch command: ', vim.fn.getcwd() .. '/')
+      myargs = {}
+      for x in string.gmatch(cmd, "%S+") do
+        table.insert(myargs, x)
+      end
+      program = myargs[1]
+      table.remove(myargs, 1)
+      return program
     end,
     cwd = '${workspaceFolder}',
     stopOnEntry = false,
-    args = {},
+    args = function()
+      return myargs
+    end,
     runInTerminal = false,
   },
 }
