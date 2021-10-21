@@ -119,7 +119,7 @@ require('formatter').setup({
       function()
         return {
           exe = 'autopep8',
-          args = { '-' },
+          args = {'-'},
           stdin = true,
         }
       end
@@ -138,7 +138,7 @@ require('formatter').setup({
       function()
         return {
           exe = 'cmake-format',
-          args = { "-" },
+          args = {'-'},
           stdin = true,
         }
       end,
@@ -179,10 +179,10 @@ require('nvim-tree').setup{
     mappings = {
       custom_only = false,
       list = {
-        { key = { 'l', '<CR>', 'o', 'e' }, cb = tree_cb 'edit' },
-        { key = 'h', cb = tree_cb 'close_node' },
-        { key = 'i', cb = tree_cb 'vsplit' },
-        { key = '<Leader>f', cb = tree_cb 'close' },
+        {key = {'l', '<CR>', 'o', 'e' }, cb = tree_cb 'edit'},
+        {key = 'h', cb = tree_cb 'close_node'},
+        {key = 'i', cb = tree_cb 'vsplit'},
+        {key = '<Leader>f', cb = tree_cb 'close'},
       }
     }
   }
