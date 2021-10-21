@@ -7,12 +7,12 @@ require('key')
 ----------------------------------
 require('lualine').setup {
   options = { 
-    theme = 'onedark', section_separators = { left = '', right = ''},
-    component_separators = { left = '', right = ''},
+    theme = 'onedark', section_separators = {left = '', right = ''},
+    component_separators = {left = '', right = ''},
     icons_enabled = false,
   },
   sections = {
-    lualine_c = { function() return vim.fn.expand('%:p') end }
+    lualine_c = {function() return vim.fn.expand('%:p') end}
   },
 }
 
@@ -62,11 +62,11 @@ require('bufferline').setup {
 local cmp = require('cmp')
 cmp.setup{
   sources = {
-    { name = 'nvim_lsp' },
-    { name = 'buffer' },
+    {name = 'nvim_lsp'},
+    {name = 'buffer'},
   },
   mapping = {
-    ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' })
+    ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})
   },
   experimental = {
     ghost_text = true,
@@ -308,10 +308,10 @@ dap.configurations.cpp = {
 }
 
 require('dapui').setup({
-  icons = { expanded = '▾', collapsed = '▸' },
+  icons = {expanded = '▾', collapsed = '▸'},
   mappings = {
     -- Use a table to apply multiple mappings
-    expand = { '<CR>', '<2-LeftMouse>' },
+    expand = {'<CR>', '<2-LeftMouse>'},
     open = 'o',
     remove = 'd',
     edit = 'e',
@@ -325,15 +325,15 @@ require('dapui').setup({
         id = 'scopes',
         size = 0.25, -- Can be float or integer > 1
       },
-      { id = 'breakpoints', size = 0.25 },
-      { id = 'stacks', size = 0.25 },
-      { id = 'watches', size = 00.25 },
+      {id = 'breakpoints', size = 0.25},
+      {id = 'stacks', size = 0.25},
+      {id = 'watches', size = 00.25},
     },
     size = 40,
     position = 'left', -- Can be "left", "right", "top", "bottom"
   },
   tray = {
-    elements = { 'repl' },
+    elements = {'repl'},
     size = 10,
     position = 'bottom', -- Can be "left", "right", "top", "bottom"
   },
@@ -341,8 +341,8 @@ require('dapui').setup({
     max_height = nil, -- These can be integers or a float between 0 and 1.
     max_width = nil, -- Floats will be treated as percentage of your screen.
     mappings = {
-      close = { 'q', '<Esc>' },
+      close = {'q', '<Esc>'},
     },
   },
-  windows = { indent = 1 },
+  windows = {indent = 1},
 })
