@@ -8,7 +8,10 @@ local function plugmap(mode, key, action, opts)
   map(mode, key, action, opts)
 end
 
--- map the leader key
+----------------------
+-- General settings
+----------------------
+-- Map the leader key
 map('n', '<Space>', '', {})
 vim.g.mapleader = ' '
 
@@ -44,34 +47,46 @@ map('v', '<Leader>y', '"+y')
 -- Replace word under cursor
 -- map('n', '<Leader>r', ':%s/\\<<c-r><c-w>\\>//g<left><left>', { silent=false })
 
--- Resize window
+----------------------
+-- Window settings
+----------------------
 map('n', '<s-l>', ':vertical resize -5<CR>')
 map('n', '<s-h>', ':vertical resize +5<CR>')
 map('n', '<s-k>', ':resize +5<CR>')
 map('n', '<s-j>', ':resize -5<CR>')
 
+----------------------
 -- Terminal settings
+----------------------
 map('n', '<Leader>h', ':wincmd h<CR>')
 map('n', '<Leader>j', ':wincmd j<CR>')
 map('n', '<Leader>k', ':wincmd k<CR>')
 map('n', '<Leader>l', ':wincmd l<CR>')
 
+----------------------
 -- Tab settings
+----------------------
 map('n', '<TAB>', ':bn<CR>')
 map('n', ']b', ':bn<CR>')
 map('n', '[b', ':bp<CR>')
 map('n', '<Leader>bw', ':<c-u>bp <bar> bd #<CR>')  -- quit current buffer
 map('n', '<Leader>bo', ':BufOnly<CR>')             -- only contain current buffer
 
--- Repalace jk with Accelerated-jk
+----------------------
+-- Accelerated-jk
+----------------------
 plugmap('n', 'j', '<Plug>(accelerated_jk_gj)')
 plugmap('n', 'k', '<Plug>(accelerated_jk_gk)')
 
+----------------------
 -- Easymotion
+----------------------
 plugmap('n', 's' , '<Plug>(easymotion-s2)')
 plugmap('n', 'f' , '<Plug>(easymotion-sl)')
 
+----------------------
 -- Toggleterm
+----------------------
 map('t', '<ESC>', [[<C-\><C-n>]])
 map('n', 'tb', ':ToggleTerm dir=./ direction=horizontal<CR>')
 map('n', 'tr', ':ToggleTerm dir=./ direction=vertical<CR>')
@@ -94,15 +109,21 @@ function lazygit_toggle()
 end
 map('n', 'zg', ':lua lazygit_toggle()<CR>')
 
+----------------------
 -- Telescope
+----------------------
 map('n', '<c-f>', ':Telescope find_files<CR>')
 map('n', '<c-g>', ':Telescope live_grep<CR>')
 
+----------------------
 -- Comment
+----------------------
 map('n', '<Leader>c', ':CommentToggle<CR>')
 map('v', '<Leader>c', ':CommentToggle<CR>')
 
+----------------------
 -- Nvim-tree
+----------------------
 function tree_find()
   local view = require'nvim-tree.view'
   if view.win_open() then
@@ -114,7 +135,9 @@ end
 map('n', '<Leader>f', ':lua tree_find()<CR>')
 map('n', '<S-r>', ':NvimTreeRefresh<CR>')
 
+----------------------
 -- DAP
+----------------------
 function debug_start()
   require('dapui').open()
   require('dap').continue()
