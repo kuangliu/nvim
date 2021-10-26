@@ -167,7 +167,6 @@ require('nvim-tree').setup{
   auto_close          = false,
   hijack_cursor       = false,
   update_cwd          = false,
-  lsp_diagnostics     = false,
   update_focused_file = {
     enable = false,
     update_cwd = false,
@@ -180,10 +179,10 @@ require('nvim-tree').setup{
     mappings = {
       custom_only = false,
       list = {
-        {key = {'l', '<CR>', 'o', 'e' }, cb = tree_cb 'edit'},
-        {key = 'h', cb = tree_cb 'close_node'},
-        {key = 'i', cb = tree_cb 'vsplit'},
-        {key = '<Leader>f', cb = tree_cb 'close'},
+        {key = {'l', '<CR>', 'o', 'e' }, cb = tree_cb('edit')},
+        {key = 'h', cb = tree_cb('close_node')},
+        {key = 'i', cb = tree_cb('vsplit')},
+        {key = '<Leader>f', cb = tree_cb('close')},
       }
     }
   }

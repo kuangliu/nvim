@@ -129,7 +129,12 @@ function tree_find()
   if view.win_open() then
     view.close()
   else
-    require'nvim-tree'.find_file(true)
+    local buf = vim.api.nvim_buf_get_name(0)
+    if string.len(buf) == 0 then
+      require('nvim-tree').toggle(false)
+    else
+      require('nvim-tree').find_file(true)
+    end
   end
 end
 map('n', '<Leader>f', ':lua tree_find()<CR>')
