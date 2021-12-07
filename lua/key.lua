@@ -72,6 +72,11 @@ map('n', '[b', ':bp<CR>')
 map('n', '<Leader>bw', ':<c-u>bp <bar> bd #<CR>')  -- quit current buffer
 map('n', '<Leader>bo', ':BufOnly<CR>')             -- only contain current buffer
 
+vim.cmd([[imap <expr> <c-l> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<c-l>']])
+vim.cmd([[smap <expr> <c-l> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<c-l>']])
+vim.cmd([[imap <expr> <c-h> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-prev)' : '<c-h>']])
+vim.cmd([[smap <expr> <c-h> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-prev)' : '<c-h>']])
+
 ----------------------
 -- Accelerated-jk
 ----------------------

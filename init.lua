@@ -61,13 +61,20 @@ require('bufferline').setup {
 ----------------------------------
 local cmp = require('cmp')
 cmp.setup{
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+    end,
+  },
   sources = {
     {name = 'nvim_lsp'},
     {name = 'buffer'},
     {name = 'path'},
+    {name = 'vsnip'},
   },
   mapping = {
-    ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})
+    ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'}),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
   },
   experimental = {
     ghost_text = true,

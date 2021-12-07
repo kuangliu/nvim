@@ -40,6 +40,8 @@ require('packer').startup(function()
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+      'hrsh7th/cmp-vsnip',
+      'hrsh7th/vim-vsnip',
     },
   }
 
@@ -75,4 +77,9 @@ require('packer').startup(function()
       require('surround').setup {mappings_style = 'surround'}
     end
   }
+
+  use {'hrsh7th/vim-vsnip'}
+  use {'hrsh7th/vim-vsnip-integ'}
+  use {'rafamadriz/friendly-snippets'}
+
 end)
