@@ -14,7 +14,7 @@ local default_options = {
   swapfile = false,
   ignorecase = true,
   shell = 'zsh',
-  mouse = 'a',
+  mouse = 'v',
 }
 
 for k, v in pairs(default_options) do
