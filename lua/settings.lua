@@ -15,6 +15,7 @@ local default_options = {
   ignorecase = true,
   shell = 'zsh',
   mouse = 'v',
+  so = 999,               -- scroll with cursor centering
 }
 
 for k, v in pairs(default_options) do
