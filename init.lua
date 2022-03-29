@@ -155,12 +155,12 @@ require('formatter').setup({
 })
 
 -- Format on save
-vim.api.nvim_exec([[
-  augroup FormatAutogroup
-    autocmd!
-    autocmd BufWritePost *.py,*.h,*.cc,CMakeLists.txt silent! FormatWrite
-  augroup END
-  ]], true)
+-- vim.api.nvim_exec([[
+--   augroup FormatAutogroup
+--     autocmd!
+--     autocmd BufWritePost *.py,*.h,*.cc,CMakeLists.txt silent! FormatWrite
+--   augroup END
+--   ]], true)
 
 ----------------------------------
 -- Nvim-tree

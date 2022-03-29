@@ -15,11 +15,14 @@ end
 map('n', '<Space>', '', {})
 vim.g.mapleader = ' '
 
--- ESC to clear search highlight
-map('n', '<ESC>', ':nohlsearch<CR>')
+-- ESC to clear search highlight & save
+map('n', '<ESC>', ':w|nohlsearch<CR>')
 
--- Map 1 to save
-map('n', '1', ':w<CR>')
+-- Save while existing insert mode
+map('i', '<ESC>', '<ESC>:w<CR>')
+
+-- Map 1 to reformat
+map('n', '1', ':Format<CR>')
 
 -- Map 2 to toggle float term
 map('n', '2', ':ToggleTerm dir=./ direction=float<CR>')
