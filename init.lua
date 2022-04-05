@@ -63,14 +63,14 @@ local cmp = require('cmp')
 cmp.setup{
   snippet = {
     expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      require('luasnip').lsp_expand(args.body)
     end,
   },
   sources = {
     {name = 'nvim_lsp'},
     {name = 'buffer'},
     {name = 'path'},
-    {name = 'vsnip'},
+    {name = 'luasnip'},
   },
   mapping = {
     ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'}),
@@ -80,6 +80,11 @@ cmp.setup{
     ghost_text = true,
   }
 }
+
+----------------------------------
+-- LuaSnip
+----------------------------------
+require('luasnip.loaders.from_vscode').load()
 
 ----------------------------------
 -- LSP
