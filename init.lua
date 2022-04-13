@@ -167,6 +167,14 @@ require('formatter').setup({
 --   augroup END
 --   ]], true)
 
+-- Auto Run
+vim.api.nvim_exec([[
+  augroup RunFile
+    autocmd BufEnter *.py let @g=":w\<CR> :TermExec direction=vertical cmd='python3 %'\<CR>"
+    autocmd BufEnter *.cc let @g=":w\<CR> :TermExec direction=vertical cmd='g++ -std=c++11 -O2 -Wall % && ./a.out'\<CR>"
+  augroup END
+]], true)
+
 ----------------------------------
 -- Nvim-tree
 ----------------------------------
