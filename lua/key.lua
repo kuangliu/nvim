@@ -130,6 +130,11 @@ map('n', '<Leader>c', ':CommentToggle<CR>')
 map('v', '<Leader>c', ':CommentToggle<CR>')
 
 ----------------------
+-- SnipRun
+----------------------
+map('n', '<Leader>g', 'ggVG:SnipRun<CR>')
+
+----------------------
 -- Nvim-tree
 ----------------------
 function tree_find()

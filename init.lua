@@ -168,12 +168,12 @@ require('formatter').setup({
 --   ]], true)
 
 -- Auto Run
-vim.api.nvim_exec([[
-  augroup RunFile
-    autocmd BufEnter *.py let @g=":w\<CR> :TermExec direction=vertical cmd='python3 %'\<CR>"
-    autocmd BufEnter *.cc let @g=":w\<CR> :TermExec direction=vertical cmd='g++ -std=c++11 -O2 -Wall % && ./a.out'\<CR>"
-  augroup END
-]], true)
+-- vim.api.nvim_exec([[
+--   augroup RunFile
+--     autocmd BufEnter *.py let @g=":w\<CR> :TermExec direction=vertical cmd='python3 %'\<CR>"
+--     autocmd BufEnter *.cc let @g=":w\<CR> :TermExec direction=vertical cmd='g++ -std=c++11 -O2 -Wall % && ./a.out'\<CR>"
+--   augroup END
+-- ]], true)
 
 ----------------------------------
 -- Nvim-tree
@@ -291,6 +291,13 @@ require('neoscroll').setup({
     easing_function = nil,       -- Default easing function
     pre_hook = nil,              -- Function to run before the scrolling animation starts
     post_hook = nil,             -- Function to run after the scrolling animation ends
+})
+
+----------------------------------
+-- SnipRun
+----------------------------------
+require('sniprun').setup({
+  display = {'Classic'},
 })
 
 ----------------------------------
