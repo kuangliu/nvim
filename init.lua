@@ -10,6 +10,7 @@ require('lualine').setup {
     theme = 'onedark', section_separators = {left = '', right = ''},
     component_separators = {left = '', right = ''},
     icons_enabled = false,
+    globalstatus=true,
   },
   sections = {
     lualine_c = {function() return vim.fn.expand('%:p') end}
