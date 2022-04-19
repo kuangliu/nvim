@@ -294,12 +294,6 @@ require('neoscroll').setup({
     post_hook = nil,             -- Function to run after the scrolling animation ends
 })
 
-----------------------------------
--- SnipRun
-----------------------------------
-require('sniprun').setup({
-  display = {'Classic'},
-})
 
 ----------------------------------
 -- DAP

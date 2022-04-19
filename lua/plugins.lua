@@ -78,6 +78,4 @@ require('packer').startup(function()
       require('surround').setup {mappings_style = 'surround'}
     end
   }
-
-  use {'michaelb/sniprun', run = 'bash ./install.sh'}
 end)
