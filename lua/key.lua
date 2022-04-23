@@ -87,8 +87,8 @@ vim.cmd([[smap <expr> <c-h> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-prev)' : '<c-
 -- Move current buffer vsp
 function move_buf_vsp()
   -- If current buffer is the only buffer, return
-  local buffers = vim.api.nvim_list_bufs()
-  if #buffers < 3 then
+  local num_buffers = #vim.fn.getbufinfo({ buflisted = 1 })
+  if num_buffers == 1 then
     return
   end
   local file_path = vim.fn.expand('%:p')  -- get current file path
