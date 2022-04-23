@@ -84,6 +84,19 @@ vim.cmd([[smap <expr> <c-l> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<c-
 vim.cmd([[imap <expr> <c-h> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-prev)' : '<c-h>']])
 vim.cmd([[smap <expr> <c-h> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-prev)' : '<c-h>']])
 
+-- Move current buffer vsp
+function move_buf_vsp()
+  -- If current buffer is the only buffer, return
+  local buffers = vim.api.nvim_list_bufs()
+  if #buffers < 3 then
+    return
+  end
+  local file_path = vim.fn.expand('%:p')  -- get current file path
+  vim.cmd([[bp | bd #]])      -- close current buffer
+  vim.cmd('vsp '..file_path)  -- reopen in vsp
+end
+map('n', '<Leader>br', ':lua move_buf_vsp()<CR>')
+
 ----------------------
 -- Accelerated-jk
 ----------------------
