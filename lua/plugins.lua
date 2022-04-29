@@ -2,7 +2,7 @@
 vim.cmd([[packadd packer.nvim]])
 
 -- Automatically run :PackerCompile whenever plugins.lua is updated with an autocommand
-vim.cmd([[ autocmd BufWritePost plugins.lua PackerCompile ]])
+vim.cmd([[autocmd BufWritePost plugins.lua PackerCompile]])
 
 require('packer').startup(function()
   -- Packer can manage itself
@@ -11,8 +11,8 @@ require('packer').startup(function()
   -- One dark theme
   use {'kuangliu/onedark.vim'}
 
-  use('rhysd/accelerated-jk')
-  use('easymotion/vim-easymotion')
+  use {'rhysd/accelerated-jk'}
+  use {'easymotion/vim-easymotion'}
 
   use {
     'hoob3rt/lualine.nvim',
