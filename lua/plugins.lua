@@ -22,7 +22,7 @@ require('packer').startup(function()
   use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
   use {
     'windwp/nvim-autopairs',
-    config = function() require'nvim-autopairs'.setup {} end
+    config = function() require('nvim-autopairs').setup {} end
   }
   use {'schickling/vim-bufonly'}
   use {'terrortylor/nvim-comment'}
@@ -51,7 +51,7 @@ require('packer').startup(function()
 
   use {
     'ray-x/lsp_signature.nvim',
-    config = function() require'lsp_signature'.setup {} end
+    config = function() require('lsp_signature').setup {} end
   }
   use {'mhartington/formatter.nvim'}
 
@@ -82,4 +82,5 @@ require('packer').startup(function()
   }
 
   use {'Shatur/neovim-session-manager'}
+  use {'stevearc/aerial.nvim'}
 end)

@@ -1,18 +1,11 @@
-local function map(mode, key, action, opts)
-  opts = vim.tbl_extend('keep', opts or {}, {noremap = true, silent = true, expr = false})
-  vim.api.nvim_set_keymap(mode, key, action, opts)
-end
-
-local function plugmap(mode, key, action, opts)
-  opts = vim.tbl_extend('keep', opts or {}, {noremap = not vim.startswith(action, '<Plug>')})
-  map(mode, key, action, opts)
+local function map(mode, key, action)
+  vim.keymap.set(mode, key, action, {silent=true})
 end
 
 ----------------------
 -- General settings
 ----------------------
 -- Map the leader key
-map('n', '<Space>', '', {})
 vim.g.mapleader = ' '
 
 -- ESC to clear search highlight & save
@@ -27,8 +20,9 @@ map('n', '1', ':Format<CR>')
 -- Map 2 to toggle float term
 map('n', '2', ':ToggleTerm dir=./ direction=float<CR>')
 
--- Map q to exit
+-- Map q/Q to exit/quit
 map('n', 'q', ':exit<CR>')
+map('n', 'Q', ':wqa!<CR>')
 
 -- Delete from line start to end of previous line
 map('n', '<Leader>dk', '^hvk$d<CR>')
@@ -100,14 +94,14 @@ map('n', '<Leader>br', ':lua move_buf_vsp()<CR>')
 ----------------------
 -- Accelerated-jk
 ----------------------
-plugmap('n', 'j', '<Plug>(accelerated_jk_gj)')
-plugmap('n', 'k', '<Plug>(accelerated_jk_gk)')
+map('n', 'j', '<Plug>(accelerated_jk_gj)')
+map('n', 'k', '<Plug>(accelerated_jk_gk)')
 
 ----------------------
 -- Easymotion
 ----------------------
-plugmap('n', 's' , '<Plug>(easymotion-s2)')
-plugmap('n', 'f' , '<Plug>(easymotion-sl)')
+map('n', 's' , '<Plug>(easymotion-s2)')
+map('n', 'f' , '<Plug>(easymotion-sl)')
 
 ----------------------
 -- Toggleterm
@@ -152,6 +146,13 @@ map('n', '<Leader>sd', ':SessionManager delete_session<CR>')
 ----------------------
 map('n', '<Leader>c', ':CommentToggle<CR>')
 map('v', '<Leader>c', ':CommentToggle<CR>')
+
+----------------------
+-- Aerial
+----------------------
+map('n', '<Leader>o', ':AerialToggle<CR>')
+map('n', '[[', ':AerialPrev<CR>')
+map('n', ']]', ':AerialNext<CR>')
 
 ----------------------
 -- Nvim-tree

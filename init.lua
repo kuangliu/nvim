@@ -370,6 +370,13 @@ require('telescope').setup {
 require('telescope').load_extension('ui-select')
 
 ----------------------------------
+-- Aerial
+----------------------------------
+require('aerial').setup {
+  width = 30,
+}
+
+----------------------------------
 -- DAP
 ----------------------------------
 local dap = require('dap')
