@@ -89,7 +89,7 @@ function move_buf_vsp()
   vim.cmd([[bp | bd #]])      -- close current buffer
   vim.cmd('vsp '..file_path)  -- reopen in vsp
 end
-map('n', '<Leader>br', ':lua move_buf_vsp()<CR>')
+map('n', '<Leader>br', move_buf_vsp)
 
 ----------------------
 -- Accelerated-jk
@@ -126,7 +126,7 @@ local lazygit = Terminal:new({
 function lazygit_toggle()
   lazygit:toggle()
 end
-map('n', 'zg', ':lua lazygit_toggle()<CR>')
+map('n', 'zg', lazygit_toggle)
 
 ----------------------
 -- Telescope
@@ -170,7 +170,7 @@ function tree_find()
     end
   end
 end
-map('n', '<Leader>f', ':lua tree_find()<CR>')
+map('n', '<Leader>f', tree_find)
 map('n', '<S-r>', ':NvimTreeRefresh<CR>')
 
 ----------------------
@@ -184,9 +184,9 @@ function debug_stop()
   require('dapui').close()
   require('dap').close()
 end
-map('n', 'B', ":lua require('dap').toggle_breakpoint()<CR>")
-map('n', '<F2>', ':lua debug_stop()<CR>')
-map('n', '<F5>', ':lua debug_start()<CR>')
-map('n', '<F10>', ":lua require('dap').step_over()<CR>")
-map('n', '<F11>', ":lua require('dap').step_into()<CR>")
-map('n', '<F12>', ":lua require('dap').step_out()<CR>")
+map('n', 'B', require('dap').toggle_breakpoint)
+map('n', '<F2>', debug_stop)
+map('n', '<F5>', debug_start)
+map('n', '<F10>', require('dap').step_over)
+map('n', '<F11>', require('dap').step_into)
+map('n', '<F12>', require('dap').step_out)
