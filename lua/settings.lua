@@ -36,7 +36,6 @@ vim.g.startify_change_to_dir = 1
 vim.cmd('colorscheme onedark')
 vim.cmd('set background=dark')
 
-vim.g.nvim_tree_highlight_opened_files = 1
 vim.g.nvim_tree_respect_buf_cwd = 1
 vim.g.nvim_tree_icons = {
   -- default = '',
