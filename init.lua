@@ -179,6 +179,32 @@ require('formatter').setup {
 ----------------------------------
 -- Nvim-tree
 ----------------------------------
+-- Reference : https://github.com/kyazdani42/nvim-tree.lua/blob/master/lua/nvim-tree/actions/movements.lua#L37
+local my_close_node = function(node)
+  local view = require('nvim-tree.view')
+  local renderer = require('nvim-tree.renderer')
+  local core = require('nvim-tree.core')
+  local utils = require('nvim-tree.utils')
+
+  local fs_stat = node.fs_stat
+  local parent = node.parent
+  if fs_stat.type == 'directory' then
+    parent = node
+  end
+
+  if not parent or parent.cwd then
+    return view.set_cursor {1, 0}
+  end
+
+  local _, line = utils.find_node(core.get_explorer().nodes, function(n)
+    return n.absolute_path == parent.absolute_path
+  end)
+
+  view.set_cursor {line + 1, 0}
+  parent.open = false
+  renderer.draw()
+end
+
 require('nvim-tree').setup {
   disable_netrw       = true,
   hijack_netrw        = true,
@@ -198,7 +224,7 @@ require('nvim-tree').setup {
       custom_only = false,
       list = {
         {key = {'l', '<CR>', 'o', 'e' }, action = 'edit'},
-        {key = 'h', action = 'close_node'},
+        {key = 'h', action = 'my_close_node', action_cb = my_close_node},
         {key = 'i', action = 'vsplit'},
       }
     }
