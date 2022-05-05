@@ -141,6 +141,13 @@ map('n', '<c-f>', ':Telescope find_files<CR>')
 map('n', '<c-g>', ':Telescope live_grep<CR>')
 
 ----------------------
+-- Session Manager
+----------------------
+map('n', '<c-p>', ':SessionManager load_session<CR>')
+map('n', '<Leader>sa', ':SessionManager save_current_session<CR>')
+map('n', '<Leader>sd', ':SessionManager delete_session<CR>')
+
+----------------------
 -- Comment
 ----------------------
 map('n', '<Leader>c', ':CommentToggle<CR>')
@@ -150,8 +157,8 @@ map('v', '<Leader>c', ':CommentToggle<CR>')
 -- Nvim-tree
 ----------------------
 function tree_find()
-  local view = require'nvim-tree.view'
-  if view.win_open() then
+  local view = require('nvim-tree.view')
+  if view.is_visible() then
     view.close()
   else
     local buf = vim.api.nvim_buf_get_name(0)

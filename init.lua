@@ -61,7 +61,7 @@ require('bufferline').setup {
 -- Nvim-cmp
 ----------------------------------
 local cmp = require('cmp')
-cmp.setup{
+cmp.setup {
   snippet = {
     expand = function(args)
       require('luasnip').lsp_expand(args.body)
@@ -102,7 +102,7 @@ local on_attach = function(client, bufnr)
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
-  local opts = { noremap=true, silent=true }
+  local opts = {noremap=true, silent=true}
 
   buf_set_keymap('n', '<Leader>r', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   -- buf_set_keymap('n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
@@ -115,19 +115,19 @@ local on_attach = function(client, bufnr)
   -- vim.api.nvim_command[[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
 end
 
-nvim_lsp['pyright'].setup{
+nvim_lsp['pyright'].setup {
   on_attach = on_attach,
   capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
 }
 
-nvim_lsp['clangd'].setup{
+nvim_lsp['clangd'].setup {
   on_attach = on_attach,
 }
 
 ----------------------------------
 -- Formatter
 ----------------------------------
-require('formatter').setup({
+require('formatter').setup {
   filetype = {
     python = {
       function()
@@ -158,7 +158,7 @@ require('formatter').setup({
       end,
     },
   }
-})
+}
 
 -- Format on save
 -- vim.api.nvim_exec([[
@@ -179,13 +179,11 @@ require('formatter').setup({
 ----------------------------------
 -- Nvim-tree
 ----------------------------------
-local tree_cb = require('nvim-tree.config').nvim_tree_callback
-require('nvim-tree').setup{
+require('nvim-tree').setup {
   disable_netrw       = true,
   hijack_netrw        = true,
   open_on_setup       = false,
   open_on_tab         = false,
-  auto_close          = false,
   hijack_cursor       = false,
   update_cwd          = false,
   update_focused_file = {
@@ -196,23 +194,31 @@ require('nvim-tree').setup{
   view = {
     width = 30,
     side = 'left',
-    auto_resize = false,
     mappings = {
       custom_only = false,
       list = {
-        {key = {'l', '<CR>', 'o', 'e' }, cb = tree_cb('edit')},
-        {key = 'h', cb = tree_cb('close_node')},
-        {key = 'i', cb = tree_cb('vsplit')},
-        {key = '<Leader>f', cb = tree_cb('close')},
+        {key = {'l', '<CR>', 'o', 'e' }, action = 'edit'},
+        {key = 'h', action = 'close_node'},
+        {key = 'i', action = 'vsplit'},
       }
     }
-  }
+  },
+  filters = {
+    dotfiles = true,
+    custom = {},
+    exclude = {},
+  },
+  git = {
+    enable = true,
+    ignore = true,
+    timeout = 400,
+  },
 }
 
 ----------------------------------
 -- Treesitter
 ----------------------------------
-require('nvim-treesitter.configs').setup{
+require('nvim-treesitter.configs').setup {
   highlight = {
     enable = true,
     custom_captures = {
@@ -230,7 +236,7 @@ require('nvim-treesitter.configs').setup{
 ----------------------------------
 -- Toggleterm
 ----------------------------------
-require('toggleterm').setup{
+require('toggleterm').setup {
   -- size can be a number or function which is passed the current terminal
   size = function(term)
     if term.direction == 'horizontal' then
@@ -270,7 +276,7 @@ require('toggleterm').setup{
 ----------------------------------
 -- Nvim-comment
 ----------------------------------
-require('nvim_comment').setup{
+require('nvim_comment').setup {
   hook = function()
     if vim.api.nvim_buf_get_option(0, 'filetype') == 'cpp' then
       vim.api.nvim_buf_set_option(0, 'commentstring', '// %s')
@@ -281,7 +287,7 @@ require('nvim_comment').setup{
 ----------------------------------
 -- Smooth scroll
 ----------------------------------
-require('neoscroll').setup({
+require('neoscroll').setup {
     -- All these keys will be mapped to their corresponding default scrolling animation
     mappings = {'<C-u>', '<C-d>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
     hide_cursor = true,          -- Hide cursor while scrolling
@@ -292,8 +298,45 @@ require('neoscroll').setup({
     easing_function = nil,       -- Default easing function
     pre_hook = nil,              -- Function to run before the scrolling animation starts
     post_hook = nil,             -- Function to run after the scrolling animation ends
-})
+}
 
+----------------------
+-- Session Manager
+----------------------
+local Path = require('plenary.path')
+require('session_manager').setup {
+  sessions_dir = Path:new(vim.fn.stdpath('data'), 'sessions'),
+  path_replacer = '__',
+  colon_replacer = '++',
+  autoload_mode = require('session_manager.config').AutoloadMode.CurrentDir,
+  autosave_last_session = true,
+  autosave_ignore_not_normal = true,
+  autosave_ignore_filetypes = {
+    'gitcommit',
+  }, 
+  autosave_only_in_session = false,
+  max_path_length = 80,
+}
+--
+-- local config_group = vim.api.nvim_create_augroup('MyConfigGroup', {}) -- A global group for all your config autocommands
+-- vim.api.nvim_create_autocmd({'SessionLoadPost'}, {
+--   group = config_group,
+--   callback = function()
+--     require('nvim-tree').toggle(false, true)
+--   end,
+-- })
+
+----------------------
+-- Telescope
+----------------------
+require('telescope').setup {
+  extensions = {
+    ['ui-select'] = {
+      require('telescope.themes').get_dropdown {}
+    }
+  }
+}
+require('telescope').load_extension('ui-select')
 
 ----------------------------------
 -- DAP
@@ -329,7 +372,7 @@ dap.configurations.cpp = {
   },
 }
 
-require('dapui').setup({
+require('dapui').setup {
   icons = {expanded = '▾', collapsed = '▸'},
   mappings = {
     -- Use a table to apply multiple mappings
@@ -367,4 +410,4 @@ require('dapui').setup({
     },
   },
   windows = {indent = 1},
-})
+}

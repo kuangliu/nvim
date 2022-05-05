@@ -29,7 +29,10 @@ require('packer').startup(function()
 
   use {
     'nvim-telescope/telescope.nvim',
-    requires = {'nvim-lua/plenary.nvim'}
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope-ui-select.nvim',
+    }
   }
 
   use {'neovim/nvim-lspconfig'}
@@ -53,9 +56,8 @@ require('packer').startup(function()
   use {'mhartington/formatter.nvim'}
 
   use {
-    'kuangliu/nvim-tree.lua',
+    'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons',
-    config = function() require'nvim-tree'.setup {} end,
   }
 
   use {'mhinz/vim-startify'}
@@ -78,4 +80,6 @@ require('packer').startup(function()
       require('surround').setup {mappings_style = 'surround'}
     end
   }
+
+  use {'Shatur/neovim-session-manager'}
 end)
