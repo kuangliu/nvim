@@ -331,9 +331,9 @@ require('neoscroll').setup {
     post_hook = nil,             -- Function to run after the scrolling animation ends
 }
 
-----------------------
+----------------------------------
 -- Session Manager
-----------------------
+----------------------------------
 local Path = require('plenary.path')
 require('session_manager').setup {
   sessions_dir = Path:new(vim.fn.stdpath('data'), 'sessions'),
@@ -357,9 +357,9 @@ vim.api.nvim_create_autocmd({'SessionLoadPost'}, {
   end,
 })
 
-----------------------
+----------------------------------
 -- Telescope
-----------------------
+----------------------------------
 require('telescope').setup {
   extensions = {
     ['ui-select'] = {
