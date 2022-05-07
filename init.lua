@@ -188,7 +188,7 @@ local my_close_node = function(node)
 
   local fs_stat = node.fs_stat
   local parent = node.parent
-  if fs_stat.type == 'directory' then
+  if fs_stat.type == 'directory' and node.open then
     parent = node
   end
 
