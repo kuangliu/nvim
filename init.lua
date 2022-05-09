@@ -54,6 +54,21 @@ require('bufferline').setup {
       guifg = '#282C34',
       guibg = '#778899',
     },
+    duplicate_selected = {
+      gui = "italic",
+      guifg = '#282C34',
+      guibg = '#778899',
+    },
+    duplicate_visible = {
+      gui = "italic",
+      guibg = '#282C34',
+      guifg = '#778899',
+    },
+    duplicate = {
+      gui = "italic",
+      guibg = '#282C34',
+      guifg = '#778899',
+    },
   },
 }
 
