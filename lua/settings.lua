@@ -1,13 +1,13 @@
 local default_options = {
-  number = true,          -- show number
-  expandtab = true,       -- expand tabs into spaces
-  shiftwidth = 2,         -- shift lines by 2 spaces
-  tabstop = 2,            -- 2 whitespaces for tabs visual presentation 
-  cursorline = true,      -- highlight current row
-  cursorcolumn = true,    -- highlight current column
-  scrolloff = 10,         -- let 10 lines before/after cursor during scroll
+  number = true, -- show number
+  expandtab = true, -- expand tabs into spaces
+  shiftwidth = 2, -- shift lines by 2 spaces
+  tabstop = 2, -- 2 whitespaces for tabs visual presentation
+  cursorline = true, -- highlight current row
+  cursorcolumn = true, -- highlight current column
+  scrolloff = 10, -- let 10 lines before/after cursor during scroll
   fileencoding = 'utf-8', -- the encoding written to a file
-  termguicolors = true,   -- set color
+  termguicolors = true, -- set color
   splitbelow = true,
   splitright = true,
   clipboard = 'unnamedplus',
@@ -15,20 +15,20 @@ local default_options = {
   ignorecase = true,
   shell = 'zsh',
   mouse = 'v',
-  so = 999,               -- scroll with cursor centering
+  so = 999, -- scroll with cursor centering
 }
 
 for k, v in pairs(default_options) do
   vim.opt[k] = v
 end
 
-vim.g.floaterm_gitcommit='floaterm'
-vim.g.floaterm_autoinsert=1
-vim.g.floaterm_width=0.9
-vim.g.floaterm_height=0.9
-vim.g.floaterm_wintitle=0
-vim.g.floaterm_autoclose=1
-vim.g.floaterm_shell='zsh'
+vim.g.floaterm_gitcommit = 'floaterm'
+vim.g.floaterm_autoinsert = 1
+vim.g.floaterm_width = 0.9
+vim.g.floaterm_height = 0.9
+vim.g.floaterm_wintitle = 0
+vim.g.floaterm_autoclose = 1
+vim.g.floaterm_shell = 'zsh'
 
 vim.g.startify_change_to_vcs_root = 1
 vim.g.startify_change_to_dir = 1
@@ -50,8 +50,8 @@ vim.g.nvim_tree_icons = {
     -- untracked = '★',
     untracked = '✗',
     deleted = '',
-    ignored = '◌'
-    },
+    ignored = '◌',
+  },
   folder = {
     arrow_open = '',
     arrow_closed = '',
@@ -61,11 +61,11 @@ vim.g.nvim_tree_icons = {
     empty_open = '',
     symlink = '',
     symlink_open = '',
-    },
+  },
   lsp = {
     hint = '',
     info = '',
     warning = '',
     error = '',
-  }
+  },
 }

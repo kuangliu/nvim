@@ -5,19 +5,24 @@ require('key')
 ----------------------------------
 -- Lualine & bufferline
 ----------------------------------
-require('lualine').setup {
-  options = { 
-    theme = 'onedark', section_separators = {left = '', right = ''},
-    component_separators = {left = '', right = ''},
+require('lualine').setup({
+  options = {
+    theme = 'onedark',
+    section_separators = { left = '', right = '' },
+    component_separators = { left = '', right = '' },
     icons_enabled = false,
-    globalstatus=true,
+    globalstatus = true,
   },
   sections = {
-    lualine_c = {function() return vim.fn.expand('%:p') end}
+    lualine_c = {
+      function()
+        return vim.fn.expand('%:p')
+      end,
+    },
   },
-}
+})
 
-require('bufferline').setup {
+require('bufferline').setup({
   options = {
     indicator_icon = '',
     modified_icon = '•',
@@ -55,47 +60,47 @@ require('bufferline').setup {
       guibg = '#778899',
     },
     duplicate_selected = {
-      gui = "italic",
+      gui = 'italic',
       guifg = '#282C34',
       guibg = '#778899',
     },
     duplicate_visible = {
-      gui = "italic",
+      gui = 'italic',
       guibg = '#282C34',
       guifg = '#778899',
     },
     duplicate = {
-      gui = "italic",
+      gui = 'italic',
       guibg = '#282C34',
       guifg = '#778899',
     },
   },
-}
+})
 
 ----------------------------------
 -- Nvim-cmp
 ----------------------------------
 local cmp = require('cmp')
-cmp.setup {
+cmp.setup({
   snippet = {
     expand = function(args)
       require('luasnip').lsp_expand(args.body)
     end,
   },
   sources = {
-    {name = 'luasnip'},
-    {name = 'nvim_lsp'},
-    {name = 'buffer'},
-    {name = 'path'},
+    { name = 'luasnip' },
+    { name = 'nvim_lsp' },
+    { name = 'buffer' },
+    { name = 'path' },
   },
   mapping = {
-    ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'}),
+    ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
     ['<CR>'] = cmp.mapping.confirm({ select = false }),
   },
   experimental = {
     ghost_text = true,
-  }
-}
+  },
+})
 
 ----------------------------------
 -- LuaSnip
@@ -110,14 +115,18 @@ local nvim_lsp = require('lspconfig')
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+  local function buf_set_keymap(...)
+    vim.api.nvim_buf_set_keymap(bufnr, ...)
+  end
+  local function buf_set_option(...)
+    vim.api.nvim_buf_set_option(bufnr, ...)
+  end
 
   -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
-  local opts = {noremap=true, silent=true}
+  local opts = { noremap = true, silent = true }
 
   buf_set_keymap('n', '<Leader>r', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   -- buf_set_keymap('n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
@@ -130,50 +139,59 @@ local on_attach = function(client, bufnr)
   -- vim.api.nvim_command[[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
 end
 
-nvim_lsp['pyright'].setup {
+nvim_lsp['pyright'].setup({
   on_attach = on_attach,
   capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-}
+})
 
-nvim_lsp['clangd'].setup {
+nvim_lsp['clangd'].setup({
   on_attach = on_attach,
-}
+})
 
 ----------------------------------
 -- Formatter
 ----------------------------------
-require('formatter').setup {
+require('formatter').setup({
   filetype = {
     python = {
       function()
         return {
           exe = 'autopep8',
-          args = {'-'},
+          args = { '-' },
           stdin = true,
         }
-      end
+      end,
     },
     cpp = {
       function()
         return {
           exe = 'clang-format',
-          args = {'--assume-filename', vim.api.nvim_buf_get_name(0), '--style', 'Chromium'},
+          args = { '--assume-filename', vim.api.nvim_buf_get_name(0), '--style', 'Chromium' },
           stdin = true,
-          cwd = vim.fn.expand('%:p:h')
+          cwd = vim.fn.expand('%:p:h'),
         }
-      end
+      end,
     },
     cmake = {
       function()
         return {
           exe = 'cmake-format',
-          args = {'-'},
+          args = { '-' },
           stdin = true,
         }
       end,
     },
-  }
-}
+    lua = {
+      function()
+        return {
+          exe = 'stylua',
+          args = { '--indent-type Spaces --indent-width 2 --quote-style AutoPreferSingle -' },
+          stdin = true,
+        }
+      end,
+    },
+  },
+})
 
 -- Format on save
 -- vim.api.nvim_exec([[
@@ -208,29 +226,29 @@ local my_close_node = function(node)
   end
 
   if not parent or parent.cwd then
-    return view.set_cursor {1, 0}
+    return view.set_cursor({ 1, 0 })
   end
 
   local _, line = utils.find_node(core.get_explorer().nodes, function(n)
     return n.absolute_path == parent.absolute_path
   end)
 
-  view.set_cursor {line + 1, 0}
+  view.set_cursor({ line + 1, 0 })
   parent.open = false
   renderer.draw()
 end
 
-require('nvim-tree').setup {
-  disable_netrw       = true,
-  hijack_netrw        = true,
-  open_on_setup       = false,
-  open_on_tab         = false,
-  hijack_cursor       = false,
-  update_cwd          = false,
+require('nvim-tree').setup({
+  disable_netrw = true,
+  hijack_netrw = true,
+  open_on_setup = false,
+  open_on_tab = false,
+  hijack_cursor = false,
+  update_cwd = false,
   update_focused_file = {
     enable = false,
     update_cwd = false,
-    ignore_list = {}
+    ignore_list = {},
   },
   view = {
     width = 30,
@@ -238,11 +256,11 @@ require('nvim-tree').setup {
     mappings = {
       custom_only = false,
       list = {
-        {key = {'l', '<CR>', 'o', 'e' }, action = 'edit'},
-        {key = 'h', action = 'my_close_node', action_cb = my_close_node},
-        {key = 'i', action = 'vsplit'},
-      }
-    }
+        { key = { 'l', '<CR>', 'o', 'e' }, action = 'edit' },
+        { key = 'h', action = 'my_close_node', action_cb = my_close_node },
+        { key = 'i', action = 'vsplit' },
+      },
+    },
   },
   filters = {
     dotfiles = true,
@@ -257,14 +275,14 @@ require('nvim-tree').setup {
   renderer = {
     icons = {
       webdev_colors = false,
-    }
-  }
-}
+    },
+  },
+})
 
 ----------------------------------
 -- Treesitter
 ----------------------------------
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter.configs').setup({
   highlight = {
     enable = true,
     custom_captures = {
@@ -277,12 +295,12 @@ require('nvim-treesitter.configs').setup {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
   },
-}  
+})
 
 ----------------------------------
 -- Toggleterm
 ----------------------------------
-require('toggleterm').setup {
+require('toggleterm').setup({
   -- size can be a number or function which is passed the current terminal
   size = function(term)
     if term.direction == 'horizontal' then
@@ -301,7 +319,7 @@ require('toggleterm').setup {
   persist_size = true,
   -- direction = 'vertical' | 'horizontal' | 'window' | 'float',
   close_on_exit = true, -- close the terminal window when the process exits
-  shell = vim.o.shell,  -- change the default shell
+  shell = vim.o.shell, -- change the default shell
   -- This field is only relevant if direction is set to 'float'
   float_opts = {
     -- The border key is *almost* the same as 'nvim_open_win'
@@ -315,42 +333,42 @@ require('toggleterm').setup {
     highlights = {
       border = 'Normal',
       background = 'Normal',
-    }
-  }
-}
+    },
+  },
+})
 
 ----------------------------------
 -- Nvim-comment
 ----------------------------------
-require('nvim_comment').setup {
+require('nvim_comment').setup({
   hook = function()
     if vim.api.nvim_buf_get_option(0, 'filetype') == 'cpp' then
       vim.api.nvim_buf_set_option(0, 'commentstring', '// %s')
     end
-  end
-}
+  end,
+})
 
 ----------------------------------
 -- Smooth scroll
 ----------------------------------
-require('neoscroll').setup {
-    -- All these keys will be mapped to their corresponding default scrolling animation
-    mappings = {'<C-u>', '<C-d>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
-    hide_cursor = true,          -- Hide cursor while scrolling
-    stop_eof = true,             -- Stop at <EOF> when scrolling downwards
-    use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
-    respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-    cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-    easing_function = nil,       -- Default easing function
-    pre_hook = nil,              -- Function to run before the scrolling animation starts
-    post_hook = nil,             -- Function to run after the scrolling animation ends
-}
+require('neoscroll').setup({
+  -- All these keys will be mapped to their corresponding default scrolling animation
+  mappings = { '<C-u>', '<C-d>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb' },
+  hide_cursor = true, -- Hide cursor while scrolling
+  stop_eof = true, -- Stop at <EOF> when scrolling downwards
+  use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
+  respect_scrolloff = false, -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+  cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+  easing_function = nil, -- Default easing function
+  pre_hook = nil, -- Function to run before the scrolling animation starts
+  post_hook = nil, -- Function to run after the scrolling animation ends
+})
 
 ----------------------------------
 -- Session Manager
 ----------------------------------
 local Path = require('plenary.path')
-require('session_manager').setup {
+require('session_manager').setup({
   sessions_dir = Path:new(vim.fn.stdpath('data'), 'sessions'),
   path_replacer = '__',
   colon_replacer = '++',
@@ -359,13 +377,13 @@ require('session_manager').setup {
   autosave_ignore_not_normal = true,
   autosave_ignore_filetypes = {
     'gitcommit',
-  }, 
+  },
   autosave_only_in_session = false,
   max_path_length = 80,
-}
+})
 
 local config_group = vim.api.nvim_create_augroup('MyConfigGroup', {}) -- A global group for all your config autocommands
-vim.api.nvim_create_autocmd({'SessionLoadPost'}, {
+vim.api.nvim_create_autocmd({ 'SessionLoadPost' }, {
   group = config_group,
   callback = function()
     require('nvim-tree').toggle(true, true)
@@ -375,21 +393,21 @@ vim.api.nvim_create_autocmd({'SessionLoadPost'}, {
 ----------------------------------
 -- Telescope
 ----------------------------------
-require('telescope').setup {
+require('telescope').setup({
   extensions = {
     ['ui-select'] = {
-      require('telescope.themes').get_dropdown {}
-    }
-  }
-}
+      require('telescope.themes').get_dropdown({}),
+    },
+  },
+})
 require('telescope').load_extension('ui-select')
 
 ----------------------------------
 -- Aerial
 ----------------------------------
-require('aerial').setup {
+require('aerial').setup({
   width = 30,
-}
+})
 
 ----------------------------------
 -- DAP
@@ -398,7 +416,7 @@ local dap = require('dap')
 dap.adapters.lldb = {
   type = 'executable',
   command = 'lldb-vscode', -- adjust as needed
-  name = 'lldb'
+  name = 'lldb',
 }
 
 dap.configurations.cpp = {
@@ -409,7 +427,7 @@ dap.configurations.cpp = {
     program = function()
       local cmd = vim.fn.input('Launch command: ', vim.fn.getcwd() .. '/')
       myargs = {}
-      for x in string.gmatch(cmd, "%S+") do
+      for x in string.gmatch(cmd, '%S+') do
         table.insert(myargs, x)
       end
       program = myargs[1]
@@ -425,11 +443,11 @@ dap.configurations.cpp = {
   },
 }
 
-require('dapui').setup {
-  icons = {expanded = '▾', collapsed = '▸'},
+require('dapui').setup({
+  icons = { expanded = '▾', collapsed = '▸' },
   mappings = {
     -- Use a table to apply multiple mappings
-    expand = {'<CR>', '<2-LeftMouse>'},
+    expand = { '<CR>', '<2-LeftMouse>' },
     open = 'o',
     remove = 'd',
     edit = 'e',
@@ -443,15 +461,15 @@ require('dapui').setup {
         id = 'scopes',
         size = 0.25, -- Can be float or integer > 1
       },
-      {id = 'breakpoints', size = 0.25},
-      {id = 'stacks', size = 0.25},
-      {id = 'watches', size = 00.25},
+      { id = 'breakpoints', size = 0.25 },
+      { id = 'stacks', size = 0.25 },
+      { id = 'watches', size = 00.25 },
     },
     size = 40,
     position = 'left', -- Can be "left", "right", "top", "bottom"
   },
   tray = {
-    elements = {'repl'},
+    elements = { 'repl' },
     size = 10,
     position = 'bottom', -- Can be "left", "right", "top", "bottom"
   },
@@ -459,8 +477,8 @@ require('dapui').setup {
     max_height = nil, -- These can be integers or a float between 0 and 1.
     max_width = nil, -- Floats will be treated as percentage of your screen.
     mappings = {
-      close = {'q', '<Esc>'},
+      close = { 'q', '<Esc>' },
     },
   },
-  windows = {indent = 1},
-}
+  windows = { indent = 1 },
+})

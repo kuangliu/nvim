@@ -1,5 +1,5 @@
 local function map(mode, key, action)
-  vim.keymap.set(mode, key, action, {silent=true})
+  vim.keymap.set(mode, key, action, { silent = true })
 end
 
 ----------------------
@@ -70,8 +70,8 @@ map('n', '<Leader>l', ':wincmd l<CR>')
 map('n', '<TAB>', ':bn<CR>')
 map('n', ']b', ':bn<CR>')
 map('n', '[b', ':bp<CR>')
-map('n', '<Leader>bw', ':<c-u>bp <bar> bd #<CR>')  -- quit current buffer
-map('n', '<Leader>bo', ':BufOnly<CR>')             -- only contain current buffer
+map('n', '<Leader>bw', ':<c-u>bp <bar> bd #<CR>') -- quit current buffer
+map('n', '<Leader>bo', ':BufOnly<CR>') -- only contain current buffer
 
 vim.cmd([[imap <expr> <c-l> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<c-l>']])
 vim.cmd([[smap <expr> <c-l> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<c-l>']])
@@ -85,9 +85,9 @@ function move_buf_vsp()
   if num_buffers == 1 then
     return
   end
-  local file_path = vim.fn.expand('%:p')  -- get current file path
-  vim.cmd([[bp | bd #]])      -- close current buffer
-  vim.cmd('vsp '..file_path)  -- reopen in vsp
+  local file_path = vim.fn.expand('%:p') -- get current file path
+  vim.cmd([[bp | bd #]]) -- close current buffer
+  vim.cmd('vsp ' .. file_path) -- reopen in vsp
 end
 map('n', '<Leader>br', move_buf_vsp)
 
@@ -100,8 +100,8 @@ map('n', 'k', '<Plug>(accelerated_jk_gk)')
 ----------------------
 -- Easymotion
 ----------------------
-map('n', 's' , '<Plug>(easymotion-s2)')
-map('n', 'f' , '<Plug>(easymotion-sl)')
+map('n', 's', '<Plug>(easymotion-s2)')
+map('n', 'f', '<Plug>(easymotion-sl)')
 
 ----------------------
 -- Toggleterm
@@ -112,11 +112,11 @@ map('n', 'tr', ':ToggleTerm dir=./ direction=vertical<CR>')
 map('n', 'tf', ':ToggleTerm dir=./ direction=float<CR>')
 map('n', 'tt', ':ToggleTerm dir=./ direction=float<CR>')
 
-local Terminal  = require('toggleterm.terminal').Terminal
-local lazygit = Terminal:new({ 
-  cmd = 'lazygit', 
-  direction='float', 
-  hidden = true ,
+local Terminal = require('toggleterm.terminal').Terminal
+local lazygit = Terminal:new({
+  cmd = 'lazygit',
+  direction = 'float',
+  hidden = true,
   float_opts = {
     border = 'curved',
     width = math.floor(vim.api.nvim_win_get_width(0) * 0.9),
