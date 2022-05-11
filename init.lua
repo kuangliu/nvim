@@ -168,7 +168,7 @@ require('formatter').setup({
           exe = 'clang-format',
           args = { '--assume-filename', vim.api.nvim_buf_get_name(0), '--style', 'Chromium' },
           stdin = true,
-          cwd = vim.fn.expand('%:p:h'),
+          cwd = vim.fn.getcwd(),
         }
       end,
     },
