@@ -13,11 +13,13 @@ require('lualine').setup({
     icons_enabled = false,
     globalstatus = true,
   },
+  extensions = { 'nvim-tree', 'toggleterm' },
   sections = {
     lualine_c = {
-      function()
-        return vim.fn.expand('%:p')
-      end,
+      {
+        'filename',
+        path = 2,
+      },
     },
   },
 })
