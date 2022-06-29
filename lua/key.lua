@@ -38,6 +38,9 @@ map('n', '<c-j>', ':move +1<CR>')
 map('v', '<', '<gv')
 map('v', '>', '>gv')
 
+-- Replace caw with cc
+map('n', 'cc', 'caw')
+
 -- Copy to clipboard
 map('v', '<Leader>y', '"+y')
 
