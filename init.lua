@@ -294,7 +294,7 @@ require('nvim-tree').setup({
       webdev_colors = false,
       git_placement = 'before',
       padding = ' ',
-      symlink_arrow = ' ➛ ',
+      symlink_arrow = ' ➜ ',
       show = {
         file = true,
         folder = true,
