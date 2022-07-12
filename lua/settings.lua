@@ -36,36 +36,36 @@ vim.g.startify_change_to_dir = 1
 vim.cmd('colorscheme onedark')
 vim.cmd('set background=dark')
 
-vim.g.nvim_tree_respect_buf_cwd = 1
-vim.g.nvim_tree_icons = {
-  -- default = '',
-  default = '',
-  symlink = '',
-  git = {
-    -- unstaged = '✗',
-    unstaged = '•',
-    staged = '✓',
-    unmerged = '',
-    renamed = '➜',
-    -- untracked = '★',
-    untracked = '✗',
-    deleted = '',
-    ignored = '◌',
-  },
-  folder = {
-    arrow_open = '',
-    arrow_closed = '',
-    default = '',
-    open = '',
-    empty = '',
-    empty_open = '',
-    symlink = '',
-    symlink_open = '',
-  },
-  lsp = {
-    hint = '',
-    info = '',
-    warning = '',
-    error = '',
-  },
-}
+-- vim.g.nvim_tree_respect_buf_cwd = 1
+-- vim.g.nvim_tree_icons = {
+--   -- default = '',
+--   default = '',
+--   symlink = '',
+--   git = {
+--     -- unstaged = '✗',
+--     unstaged = '•',
+--     staged = '✓',
+--     unmerged = '',
+--     renamed = '➜',
+--     -- untracked = '★',
+--     untracked = '✗',
+--     deleted = '',
+--     ignored = '◌',
+--   },
+--   folder = {
+--     arrow_open = '',
+--     arrow_closed = '',
+--     default = '',
+--     open = '',
+--     empty = '',
+--     empty_open = '',
+--     symlink = '',
+--     symlink_open = '',
+--   },
+--   lsp = {
+--     hint = '',
+--     info = '',
+--     warning = '',
+--     error = '',
+--   },
+-- }

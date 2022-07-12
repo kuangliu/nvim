@@ -241,7 +241,6 @@ require('formatter').setup({
 ----------------------------------
 -- Nvim-tree
 ----------------------------------
--- Reference : https://github.com/kyazdani42/nvim-tree.lua/blob/master/lua/nvim-tree/actions/movements.lua#L37
 local my_close_node = function(node)
   local view = require('nvim-tree.view')
   local renderer = require('nvim-tree.renderer')
@@ -268,17 +267,6 @@ local my_close_node = function(node)
 end
 
 require('nvim-tree').setup({
-  disable_netrw = true,
-  hijack_netrw = true,
-  open_on_setup = false,
-  open_on_tab = false,
-  hijack_cursor = false,
-  update_cwd = false,
-  update_focused_file = {
-    enable = false,
-    update_cwd = false,
-    ignore_list = {},
-  },
   view = {
     width = 30,
     side = 'left',
@@ -304,6 +292,42 @@ require('nvim-tree').setup({
   renderer = {
     icons = {
       webdev_colors = false,
+      git_placement = 'before',
+      padding = ' ',
+      symlink_arrow = ' ➛ ',
+      show = {
+        file = true,
+        folder = true,
+        folder_arrow = true,
+        git = true,
+      },
+      glyphs = {
+        -- default = '',
+        default = '',
+        symlink = '',
+        bookmark = '',
+        folder = {
+          arrow_closed = '',
+          arrow_open = '',
+          default = '',
+          open = '',
+          empty = '',
+          empty_open = '',
+          symlink = '',
+          symlink_open = '',
+        },
+        git = {
+          -- unstaged = '✗',
+          unstaged = '•',
+          staged = '✓',
+          unmerged = '',
+          renamed = '➜',
+          -- untracked = '★',
+          untracked = '✗',
+          deleted = '',
+          ignored = '◌',
+        },
+      },
     },
   },
 })
