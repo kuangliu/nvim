@@ -37,44 +37,44 @@ require('bufferline').setup({
   },
   highlights = {
     fill = {
-      guibg = '#282C34',
+      bg = '#282C34',
     },
     background = {
-      gui = 'bold',
-      guifg = '#778899',
-      guibg = '#282C34',
+      fg = '#778899',
+      bg = '#282C34',
+      bold = true,
     },
     tab_close = {
-      guibg = '#282C34',
+      bg = '#282C34',
     },
     separator = {
-      guifg = '#282C34',
-      guibg = '#282C34',
+      fg = '#282C34',
+      bg = '#282C34',
     },
     buffer_selected = {
-      gui = 'bold',
-      guifg = '#282C34',
-      guibg = '#778899',
+      fg = '#282C34',
+      bg = '#778899',
+      bold = true,
     },
     modified_selected = {
-      gui = 'bold',
-      guifg = '#282C34',
-      guibg = '#778899',
+      fg = '#282C34',
+      bg = '#778899',
+      bold = true,
     },
     duplicate_selected = {
-      gui = 'italic',
-      guifg = '#282C34',
-      guibg = '#778899',
+      fg = '#282C34',
+      bg = '#778899',
+      italic = true,
     },
     duplicate_visible = {
-      gui = 'italic',
-      guibg = '#282C34',
-      guifg = '#778899',
+      bg = '#282C34',
+      fg = '#778899',
+      italic = true,
     },
     duplicate = {
-      gui = 'italic',
-      guibg = '#282C34',
-      guifg = '#778899',
+      bg = '#282C34',
+      fg = '#778899',
+      italic = true,
     },
   },
 })
@@ -177,6 +177,28 @@ nvim_lsp['clangd'].setup({
   on_attach = on_attach,
 })
 
+nvim_lsp.rust_analyzer.setup({
+    on_attach=on_attach,
+    settings = {
+        ["rust-analyzer"] = {
+            imports = {
+                granularity = {
+                    group = "module",
+                },
+                prefix = "self",
+            },
+            cargo = {
+                buildScripts = {
+                    enable = true,
+                },
+            },
+            procMacro = {
+                enable = true
+            },
+        }
+    }
+})
+
 ----------------------------------
 -- Formatter
 ----------------------------------
@@ -198,6 +220,15 @@ require('formatter').setup({
           args = { '--assume-filename', vim.api.nvim_buf_get_name(0), '--style', 'Chromium' },
           stdin = true,
           cwd = vim.fn.getcwd(),
+        }
+      end,
+    },
+    rust = {
+      function()
+        return {
+          exe = 'rustfmt',
+          args = { ' ' },
+          stdin = true,
         }
       end,
     },
