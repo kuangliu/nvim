@@ -26,7 +26,7 @@ require('lualine').setup({
 
 require('bufferline').setup({
   options = {
-    indicator_icon = '',
+    indicator = { icon = '' },
     modified_icon = '•',
     show_buffer_icons = false,
     show_buffer_close_icons = false,
