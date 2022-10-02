@@ -208,7 +208,7 @@ require('formatter').setup({
       function()
         return {
           exe = 'autopep8',
-          args = { '-' },
+          args = { '--max-line-length', 120, '-' },
           stdin = true,
         }
       end,
