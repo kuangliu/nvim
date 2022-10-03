@@ -16,6 +16,7 @@ local default_options = {
   shell = 'zsh',
   mouse = 'v',
   so = 999, -- scroll with cursor centering
+  cmdheight = 0,
 }
 
 for k, v in pairs(default_options) do
