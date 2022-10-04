@@ -26,7 +26,6 @@ require('packer').startup(function()
       require('nvim-autopairs').setup({})
     end,
   })
-  use({ 'schickling/vim-bufonly' })
   use({ 'terrortylor/nvim-comment' })
 
   use({

@@ -74,7 +74,16 @@ map('n', '<TAB>', ':bn<CR>')
 map('n', ']b', ':bn<CR>')
 map('n', '[b', ':bp<CR>')
 map('n', '<Leader>bw', ':<c-u>bp <bar> bd #<CR>') -- quit current buffer
-map('n', '<Leader>bo', ':BufOnly<CR>') -- only contain current buffer
+
+-- Close all other buffers
+function buf_only()
+  vim.cmd([[BufferLineCloseLeft]])
+  vim.cmd([[BufferLineCloseRight]])
+  local lazy = require('bufferline.lazy')
+  local ui = lazy.require('bufferline.ui')
+  ui.refresh()
+end
+map('n', '<Leader>bo', buf_only)
 
 -- Move current buffer vsp
 function move_buf_vsp()
