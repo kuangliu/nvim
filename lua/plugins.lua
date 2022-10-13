@@ -12,7 +12,7 @@ require('packer').startup(function()
   use({ 'kuangliu/onedark.vim' })
 
   use({ 'rhysd/accelerated-jk' })
-  use({ 'easymotion/vim-easymotion' })
+  use({ 'kuangliu/vim-easymotion' })
 
   use({
     'hoob3rt/lualine.nvim',
