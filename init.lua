@@ -27,6 +27,7 @@ require('lualine').setup({
 require('bufferline').setup({
   options = {
     indicator = { icon = '' },
+    separator_style = { '', '' },
     modified_icon = '•',
     show_buffer_icons = false,
     show_buffer_close_icons = false,
